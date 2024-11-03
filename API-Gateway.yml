@@ -1,0 +1,35 @@
+server:
+  port: 3333
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: Product-Service
+          uri: lb://PRODUCT-SERVICE
+          predicates:
+            - Path=/api/products/**
+
+        - id: Product-Service
+          uri: lb://PRODUCT-SERVICE
+          predicates:
+            - Path=/api/product-category/**
+
+        - id: Order-Payment-Service
+          uri: lb://ORDER-PAYMENT-SERVICE
+          predicates:
+            - Path=/api/orders/**
+
+        - id: Customer-Service
+          uri: lb://CUSTOMER-SERVICE
+          predicates:
+            - Path=/api/customer/**
+
+        - id: Admin-Service
+          uri: lb://ADMIN-SERVICE
+          predicates:
+            - Path=/api/admin/**
+
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG

@@ -1,0 +1,81 @@
+server:
+  port: 8085
+  
+spring:
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/kannan_ecomm
+    username: root
+    password: '!!June@2023'
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: 'kannanlearning2621@gmail.com'
+    password: 'yvwr fgbl bwtj intj'
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+  boot:
+    admin:
+      client:
+        url: http://localhost:1111/
+
+# PDF Generation properties
+pdfDir: invoices/
+reportFileName: invoice
+reportFileNameDateFormat: dd_MMMM_yyyy
+localDateFormat: "dd MMMM yyyy HH:mm:ss"
+logoImgPath: logo.png
+logoImgScale: 50,50
+currencySymbol: $
+table_noOfColumns: 4
+table:
+  columnNames: Item Name,Quantity,Unit Price,Net Price
+
+# AWS S3 Bucket configuration
+aws:
+  accessKey: 'AKIA3FLD5RQHFGBI5H4D'
+  secret: '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'
+  region: 'us-east-1'
+  bucketName: 'kannan-ecommerce-bucket'
+
+# Wati Properties
+wati:
+  notification:
+    template:
+      name: delivery_notification
+  payment:
+    reminder:
+      template:
+        name: payment_reminders
+  send:
+    template:
+      msg:
+        url: ""
+  token: ""
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
